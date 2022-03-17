@@ -34,7 +34,10 @@ const Companies = () => {
 
   useEffect(() => {
     const getCompanies = async () => {
-      const response = await axios.get("/company");
+  // "proxy": "https://young-brushlands-24339.herokuapp.com",
+      const response = await axios.get(
+        "https://young-brushlands-24339.herokuapp.com/company"
+      );
       // console.log("Companies: ", response.data);
       setCompanies(response.data);
       return response;
