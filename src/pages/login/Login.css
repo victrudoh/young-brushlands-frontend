@@ -1,0 +1,10 @@
+.inputWidth {
+    width: 50%;
+    padding: .5rem;
+    border-radius: var(--border-radius);
+}
+
+.loginCard {
+    background-color: aqua;
+    width: 100%;
+}
