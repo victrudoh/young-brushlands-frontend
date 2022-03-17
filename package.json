@@ -1,6 +1,5 @@
 {
   "name": "young-brushlands",
-  "proxy": "https://young-brushlands-24339.herokuapp.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
