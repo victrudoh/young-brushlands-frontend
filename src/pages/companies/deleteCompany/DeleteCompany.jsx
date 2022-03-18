@@ -61,7 +61,7 @@ const DeleteCompany = () => {
 
   return (
     <>
-      <Wrapper>Delete Company</Wrapper>
+      <Wrapper></Wrapper>
       <Card>
         <h1 className="h3 mb-5 fw-bold">Delete company</h1>
         Do you want to delete <b>{company.name}</b>?

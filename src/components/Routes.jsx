@@ -33,7 +33,7 @@ const Routes = () => {
 
       {/* SHARES ROUTES */}
       <Route path="/shares" component={Shares} />
-      <Route path="/buy_shares" component={BuyShares} />
+      <Route path="/buy_shares/:id" component={BuyShares} />
     </Switch>
   );
 };

@@ -34,7 +34,7 @@ const Shares = () => {
 
   return (
     <>
-      <Wrapper className="container">
+      <Wrapper className="container my-5">
         <TopContainer>
           <Header>Buy shares</Header>
         </TopContainer>
