@@ -5,6 +5,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Topbar from "../topbar/Topbar";
 import Routes from "../Routes";
 import Footer from "../footer/Footer";
+// import Sidebar from "../sidebar/Sidebar";
+
 
 // STYLES
 import { LayoutStyle } from "./Layout.Styles";
@@ -16,6 +18,7 @@ const Layout = () => {
         render={(props) => (
           <>
             <Topbar className="my-5" />
+            {/* <Sidebar /> */}
             <LayoutStyle>
               <Routes />
               <Footer />

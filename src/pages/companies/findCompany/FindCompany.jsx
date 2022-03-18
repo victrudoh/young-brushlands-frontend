@@ -19,7 +19,9 @@ const FindCompany = () => {
 
    const searchCompaniesHandler = () => {
       const searchCompanies = async () => {
-        const response = await axios.get(`/company/${searchField}`);
+        const response = await axios.get(
+          `https://young-brushlands-24339.herokuapp.com/company/${searchField}`
+        );
         console.log("searched companies: ", response.data);
         setGetCompany(response.data);
       };

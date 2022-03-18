@@ -19,9 +19,13 @@ const CreateCompany = () => {
   const create = async (e) => {
     e.preventDefault();
     console.log(company);
-    const response = await axios.post("/company", company, {
-      headers: { "content-Type": "application/json" },
-    });
+    const response = await axios.post(
+      "https://young-brushlands-24339.herokuapp.com/company",
+      company,
+      {
+        headers: { "content-Type": "application/json" },
+      }
+    );
     if (response.status === 201) {
       history.push("/companies");
     }

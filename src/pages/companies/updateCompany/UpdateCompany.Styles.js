@@ -34,8 +34,9 @@ export const Body = styled.div`
     min-width: 400px;
 
     @media (max-width: 768px) {
-      width: fit-content;
-      min-width: 300px;
+      width: 280px;
+      min-width: 200px;
+      margin: 0 auto;
     }
   }
 

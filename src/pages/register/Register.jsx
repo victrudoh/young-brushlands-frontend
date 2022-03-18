@@ -18,9 +18,13 @@ const Register = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    const response = await axios.post("/account/auth/register", userDetails, {
-      headers: { "content-type": "application/json" },
-    });
+    const response = await axios.post(
+      "https://young-brushlands-24339.herokuapp.com/account/auth/register",
+      userDetails,
+      {
+        headers: { "content-type": "application/json" },
+      }
+    );
     if (response.status === 201) {
       localStorage.setItem("token", response.data.access_token);
       history.push("/login")

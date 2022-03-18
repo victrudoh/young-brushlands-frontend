@@ -64,7 +64,9 @@ const Companies = () => {
         </Right>
 
         <Row>
-          {companies.map((company) => (
+
+        {companies.length > 0 ? 
+          companies.map((company) => (
             <Col>
               <Card
                 id={company.id}
@@ -75,7 +77,9 @@ const Companies = () => {
                 available={company.available_shares}
               />
             </Col>
-          ))}
+          ))
+
+         : <p>No Companies found</p>  }
         </Row>
       </Wrapper>
     </>

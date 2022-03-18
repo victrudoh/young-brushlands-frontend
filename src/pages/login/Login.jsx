@@ -26,7 +26,11 @@ const Login = () => {
       for(const value in userDetails){
           formData.append(value, userDetails[value])
       }
-      const response = await axios.post("/account/login", formData, {});
+      const response = await axios.post(
+        "https://young-brushlands-24339.herokuapp.com/account/login",
+        formData,
+        {}
+      );
       if (response.status === 200) {
         localStorage.setItem("token", response.data.access_token);
         history.push("/");

@@ -8,7 +8,7 @@ const Topbar = () => {
 
   return (
     <>
-      <header class="p-2 bg-dark text-white fixed-top">
+      <header class="p-2 bg-dark text-white fixed-top NavHeight">
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a
@@ -24,7 +24,7 @@ const Topbar = () => {
               ></svg>
             </a>
 
-            <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center">
               <li>
                 <NavLink
                   to="/"

@@ -19,7 +19,7 @@ const WhyUs = () => {
   return (
     <>
       <Wrapper>
-        <TitleText>Why trade with us?</TitleText>
+        <TitleText>Why choose us?</TitleText>
         <CardHolder>
           <Card
             icon={"bx bx-check-shield"}

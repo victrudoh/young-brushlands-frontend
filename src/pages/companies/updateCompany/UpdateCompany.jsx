@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 // styles
-import { Wrapper, Header, Body } from "./UpdateCompany.Styles";
+import { Wrapper, Body } from "./UpdateCompany.Styles";
 
 const UpdateCompany = ({ companyId }) => {
 
@@ -20,9 +20,13 @@ const UpdateCompany = ({ companyId }) => {
     const submit = async (e) => {
         e.preventDefault();
         console.log("Company: ", company);
-        const response = await axios.put(`/company/${company.id}`, company, {
-          headers: { "content-type": "application/json" },
-        });
+        const response = await axios.put(
+          `https://young-brushlands-24339.herokuapp.com/company/${company.id}`,
+          company,
+          {
+            headers: { "content-type": "application/json" },
+          }
+        );
         if (response.status === 200) {
             history.push("/companies")
         }
@@ -40,7 +44,7 @@ const UpdateCompany = ({ companyId }) => {
   return (
     <>
       <Wrapper className="container">
-        <Header>Update company</Header>
+        {/* <Header>Update company</Header> */}
         <br />
         <Body>
           <form className="text-center form-signin" onSubmit={submit}></form>

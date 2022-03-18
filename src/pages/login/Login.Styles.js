@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: aliceblue;
-  background-color: var(--themeColor);
-  color: var(--text-white);
+  /* background-color: var(--themeColor); */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  color: var(--themeColor);
   padding: 1rem;
   /* height: 50vh; */
   width: 50%;

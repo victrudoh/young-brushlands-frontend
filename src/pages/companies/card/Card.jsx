@@ -9,7 +9,7 @@ const Card = ({ id, name, symbol, currency, price, available }) => {
   const history = useHistory();
 
   const gotoUpdateCompanyHandler = () => {
-    history.push("/update_company");
+    history.push("/update_company/");
   };
 
   return (
@@ -19,7 +19,6 @@ const Card = ({ id, name, symbol, currency, price, available }) => {
           <div className="name">
             <span>{name}</span>
             <h2>{symbol}</h2>
-            {id}
           </div>
           <div className="price">
             <h3>{price}</h3>
