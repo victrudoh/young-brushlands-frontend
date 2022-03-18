@@ -39,7 +39,8 @@ export const Card = styled.div`
     margin: 0.5rem 0;
 
     @media (max-width: 768px) {
-      width: fit-content;
+      width: 100%;
+      padding: 0.3rem;
     }
   }
 
