@@ -48,7 +48,6 @@ const DeleteCompany = () => {
 
     const submit = async () => {
         setLoading(true);
-        // e.preventDefault();
         console.log("Company: ", company);
         const response = await axios.delete(
           `https://young-brushlands-24339.herokuapp.com/company/${id}`

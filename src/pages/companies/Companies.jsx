@@ -57,7 +57,7 @@ const Companies = () => {
 
   return (
     <>
-      <Wrapper className="container">
+      <Wrapper className="container mb-5">
         <TopContainer>
           <Header>Companies</Header>
         </TopContainer>

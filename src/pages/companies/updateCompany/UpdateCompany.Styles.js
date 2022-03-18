@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   color: var(--themeColor);
   padding: 1rem;
-  /* height: 50vh; */
   width: 50%;
   margin: 100px auto;
   border-radius: 10px;
@@ -46,12 +45,17 @@ export const Body = styled.div`
     margin: 0.5rem 0;
 
     @media (max-width: 768px) {
-      width: fit-content;
+      width: 100%;
+      padding: 0.3rem;
     }
   }
 
   label {
     font-weight: 500;
     padding: 0 0.3rem;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 `;

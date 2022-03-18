@@ -5,9 +5,13 @@ import { useHistory } from "react-router-dom";
 // styles
 import { Wrapper, Card } from "./CreateCompany.Styles";
 
+// components
+import { Spinner } from "../../../components/spinner/Spinner.Styles";
+
 const CreateCompany = () => {
   const history = useHistory();
 
+  // States
   const [company, setCompany] = useState({
     name: "",
     symbol: "",
@@ -16,7 +20,10 @@ const CreateCompany = () => {
     currency: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const create = async (e) => {
+    setLoading(true);
     e.preventDefault();
     console.log(company);
     const response = await axios.post(
@@ -26,6 +33,7 @@ const CreateCompany = () => {
         headers: { "content-Type": "application/json" },
       }
     );
+    setLoading(false);
     if (response.status === 201) {
       history.push("/companies");
     }
@@ -38,6 +46,10 @@ const CreateCompany = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
+    const gotoGetCompaniesHandler = () => {
+      history.push("/companies");
+    };
 
   return (
     <>
@@ -60,64 +72,76 @@ const CreateCompany = () => {
             <br />
 
             <div className="spacing">
-            <label>Symbol: </label>
-            <input
-              type="text"
-              name="symbol"
-              id="symbol"
-              placeholder="Symbol"
-              onChange={onchangeHandler}
-              defaultValue={company.symbol}
-            />
+              <label>Symbol: </label>
+              <input
+                type="text"
+                name="symbol"
+                id="symbol"
+                placeholder="Symbol"
+                onChange={onchangeHandler}
+                defaultValue={company.symbol}
+              />
             </div>
             <br />
 
             <div className="spacing">
-            <label>Price: </label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              placeholder="Price"
-              onChange={onchangeHandler}
-              defaultValue={company.price}
-            />
+              <label>Price: </label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                placeholder="Price"
+                onChange={onchangeHandler}
+                defaultValue={company.price}
+              />
             </div>
             <br />
 
             <div className="spacing">
-            <label>Available shares: </label>
-            <input
-              type="number"
-              id="available_shares"
-              name="available_shares"
-              placeholder="Available shares"
-              onChange={onchangeHandler}
-              defaultValue={company.available_shares}
-            />
+              <label>Available shares: </label>
+              <input
+                type="number"
+                id="available_shares"
+                name="available_shares"
+                placeholder="Available shares"
+                onChange={onchangeHandler}
+                defaultValue={company.available_shares}
+              />
             </div>
             <br />
 
             <div className="spacing">
-            <label>Currency: </label>
-            <input
-              type="text"
-              className="inputWidth"
-              id="currency"
-              name="currency"
-              placeholder="Currency"
-              onChange={onchangeHandler}
-              defaultValue={company.currency}
-            />
+              <label>Currency: </label>
+              <input
+                type="text"
+                className="inputWidth"
+                id="currency"
+                name="currency"
+                placeholder="Currency"
+                onChange={onchangeHandler}
+                defaultValue={company.currency}
+              />
             </div>
             <br />
 
-            <button
-              className="w-50 btn btn-md btn-outline-warning my-4"
-              type="submit"
-            >
-              Create company
-            </button>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <>
+                <button
+                  className="mx-2 btn btn-md btn-outline-warning my-4"
+                  type="submit"
+                >
+                  Create
+                </button>
+                <button
+                  className="mx-2 btn btn-md btn-outline-warning my-4"
+                  onClick={gotoGetCompaniesHandler}
+                >
+                  Back
+                </button>
+              </>
+            )}
           </form>
         </Card>
       </Wrapper>
