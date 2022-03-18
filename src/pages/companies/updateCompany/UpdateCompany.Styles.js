@@ -2,6 +2,18 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   margin-top: 100px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  color: var(--themeColor);
+  padding: 1rem;
+  /* height: 50vh; */
+  width: 50%;
+  margin: 100px auto;
+  border-radius: 10px;
+
+  @media (max-width: 768px) {
+    margin: 200px 3rem;
+    width: 80%;
+  }
 `;
 
 export const Header = styled.span`
@@ -13,37 +25,33 @@ export const Header = styled.span`
 `;
 
 export const Body = styled.div`
-  margin: 2rem auto;
-  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  margin-bottom: 150px;
-  border-radius: 10px;
-  width: 40%;
+  gap: 0.8rem;
 
-  @media (max-width: 768px) {
-    width: 80%;
+  .spacing {
+    display: flex;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
   }
 
   input {
+    width: 500px;
     padding: 0.5rem;
     border-radius: 8px;
     margin: 0.5rem 0;
-    min-width: 50%;
 
     @media (max-width: 768px) {
-      width: 280px;
-      min-width: 200px;
-      margin: 0 auto;
+      width: fit-content;
     }
   }
 
   label {
     font-weight: 500;
     padding: 0 0.3rem;
-    margin-right: 15px;
   }
-
 `;

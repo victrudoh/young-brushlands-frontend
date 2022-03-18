@@ -81,29 +81,34 @@ const UpdateCompany = () => {
           <form className="text-center form-signin" onSubmit={submit}>
             <h1 className="h3 mb-5 fw-bold">Update Company</h1>
 
-            <label>Company name: </label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Company name"
-              onChange={onchangeHandler}
-              defaultValue={company.name}
-            />
+            <div className="spacing">
+              <label>Company name: </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Company name"
+                onChange={onchangeHandler}
+                defaultValue={company.name}
+              />
+            </div>
             <br />
 
-            <label>Symbol: </label>
-            <input
-              type="text"
-              name="symbol"
-              id="symbol"
-              placeholder="Symbol"
-              onChange={onchangeHandler}
-              defaultValue={company.symbol}
-            />
+            <div className="spacing">
+              <label>Product symbol: </label>
+              <input
+                type="text"
+                name="symbol"
+                id="symbol"
+                placeholder="Symbol"
+                onChange={onchangeHandler}
+                defaultValue={company.symbol}
+              />
+            </div>
             <br />
 
-            <label>Price: </label>
+            <div className="spacing">
+            <label>Product price: </label>
             <input
               type="number"
               name="price"
@@ -112,8 +117,10 @@ const UpdateCompany = () => {
               onChange={onchangeHandler}
               defaultValue={company.price}
             />
+            </div>
             <br />
 
+            <div className="spacing">
             <label>Available Shares: </label>
             <input
               type="number"
@@ -123,6 +130,7 @@ const UpdateCompany = () => {
               onChange={onchangeHandler}
               defaultValue={company.available_shares}
             />
+            </div>
             <br />
 
             {loading ? <Spinner /> : <></>}
@@ -143,7 +151,6 @@ const UpdateCompany = () => {
             </div>
           </form>
         </Body>
-        Id: {id}
       </Wrapper>
     </>
   );

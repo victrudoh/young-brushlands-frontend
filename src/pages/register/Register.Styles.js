@@ -11,13 +11,17 @@ export const Wrapper = styled.div`
 
   @media (max-width: 768px) {
     margin: 200px 3rem;
+    padding: 0.8rem;
     width: 80%;
   }
 `;
 
 export const Card = styled.div`
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
 
   .spacing {
     display: flex;
@@ -28,20 +32,18 @@ export const Card = styled.div`
   }
 
   input {
+    width: 500px;
     padding: 0.5rem;
     border-radius: 8px;
     margin: 0.5rem 0;
-    min-width: 400px;
 
     @media (max-width: 768px) {
       width: fit-content;
-      min-width: 300px;
     }
   }
 
   label {
     font-weight: 500;
     padding: 0 0.3rem;
-    margin-right: 15px;
   }
 `;

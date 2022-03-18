@@ -54,6 +54,7 @@ const Register = () => {
           <form className="text-center my-5 form-signin" onSubmit={submit}>
             <h1 className="h3 mb-5 fw-bold">Register</h1>
 
+            <div className="spacing">
             <label>Username: </label>
             <input
               type="text"
@@ -63,8 +64,10 @@ const Register = () => {
               onChange={onchangeHandler}
               defaultValue={userDetails.username}
             />
+            </div>
             <br />
 
+            <div className="spacing">
             <label>User email: </label>
             <input
               type="email"
@@ -74,8 +77,10 @@ const Register = () => {
               onChange={onchangeHandler}
               defaultValue={userDetails.email}
             />
+            </div>
             <br />
 
+            <div className="spacing">
             <label>Full name: </label>
             <input
               type="text"
@@ -85,8 +90,10 @@ const Register = () => {
               onChange={onchangeHandler}
               defaultValue={userDetails.full_name}
             />
+            </div>
             <br />
 
+            <div className="spacing">
             <label>Password: </label>
             <input
               type="password"
@@ -96,6 +103,7 @@ const Register = () => {
               onChange={onchangeHandler}
               defaultValue={userDetails.password}
             />
+            </div>
             <br />
 
             {loading ? <Spinner /> : <></>}
