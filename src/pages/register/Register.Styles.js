@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
     margin: 200px 3rem;
     padding: 0.8rem;
     width: 80%;
+    
   }
 `;
 
@@ -45,5 +46,9 @@ export const Card = styled.div`
   label {
     font-weight: 500;
     padding: 0 0.3rem;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
   }
 `;
