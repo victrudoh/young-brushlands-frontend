@@ -15,6 +15,7 @@ import {
 
 // Components
 import Card from "./card/Card";
+import { Spinner } from "../../components/spinner/Spinner.Styles";
 
 const Companies = () => {
 
@@ -28,23 +29,31 @@ const Companies = () => {
     history.push("/find_company");
   };
 
-
   // state
   const [companies, setCompanies] = useState([]);
+  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(false);
+
+  const getCompanies = async () => {
+    try {
+      // setError(false)
+      setLoading(true)
+        // "proxy": "https://young-brushland-24339.herokuapp.com",
+        const response = await axios.get(
+          "https://young-brushlands-24339.herokuapp.com/company"
+        );
+        setCompanies(response.data);
+        setLoading(false)
+        return response;      
+    } catch (error) {
+      console.log(error)
+      // setError(true);
+    }
+  }
 
   useEffect(() => {
-    const getCompanies = async () => {
-  // "proxy": "https://young-brushlands-24339.herokuapp.com",
-      const response = await axios.get(
-        "https://young-brushlands-24339.herokuapp.com/company"
-      );
-      // console.log("Companies: ", response.data);
-      setCompanies(response.data);
-      return response;
-    };
     getCompanies();
-    // console.log("State: ", companies);
-  }, [companies]);
+  }, []);
 
   return (
     <>
@@ -63,7 +72,10 @@ const Companies = () => {
           </Create>
         </Right>
 
+          {(loading) ? <Spinner /> : <></>}
+          
         <Row>
+
 
         {companies.length > 0 ? 
           companies.map((company) => (
@@ -75,6 +87,7 @@ const Companies = () => {
                 currency={company.currency}
                 price={company.price}
                 available={company.available_shares}
+                type='update'
               />
             </Col>
           ))

@@ -5,6 +5,7 @@ import axios from "axios";
 // STYLES
 import "./Login.css";
 import { Wrapper, Card } from "./Login.Styles";
+import { Spinner } from "../../components/spinner/Spinner.Styles";
 
 const Login = () => {
 
@@ -18,8 +19,10 @@ const Login = () => {
       client_id: "",
       client_secret: ""
     });
+    const [loading, setLoading] = useState(false);
 
     const submit = async (e) => {
+      setLoading(true);
       e.preventDefault();
       console.log(userDetails)
       const formData = new FormData()
@@ -31,6 +34,7 @@ const Login = () => {
         formData,
         {}
       );
+      setLoading(false);
       if (response.status === 200) {
         localStorage.setItem("token", response.data.access_token);
         history.push("/");
@@ -78,7 +82,12 @@ const Login = () => {
             />
             <br />
 
-            <button className="w-50 btn btn-md btn-outline-warning my-4" type="submit">
+            {loading ? <Spinner /> : <></>}
+
+            <button
+              className="w-50 btn btn-md btn-outline-warning my-4"
+              type="submit"
+            >
               Sign in
             </button>
           </form>

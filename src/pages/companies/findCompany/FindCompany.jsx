@@ -8,10 +8,12 @@ import { Wrapper, TopContainer, Header, Body } from "./FindCompany.Styles";
 // components
 import Search from "./search/Search";
 import Card from "../card/Card";
+import { Spinner } from "../../../components/spinner/Spinner.Styles";
 
 const FindCompany = () => {
   const [searchField, setSearchField] = useState("");
   const [getCompany, setGetCompany] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const onSearchChangeHandler = (e) => {
     setSearchField(e.target.value);
@@ -19,10 +21,12 @@ const FindCompany = () => {
 
    const searchCompaniesHandler = () => {
       const searchCompanies = async () => {
+        setLoading(true);
         const response = await axios.get(
           `https://young-brushlands-24339.herokuapp.com/company/${searchField}`
         );
         console.log("searched companies: ", response.data);
+        setLoading(false);
         setGetCompany(response.data);
       };
       searchCompanies();
@@ -44,13 +48,14 @@ const FindCompany = () => {
             Search
           </button>
           <div className="cardHolder">
-              <Card
-                name={getCompany.name}
-                symbol={getCompany.symbol}
-                currency={getCompany.currency}
-                price={getCompany.price}
-                available={getCompany.available_shares}
-              />
+            {loading ? <Spinner /> : 
+            <Card
+              name={getCompany.name}
+              symbol={getCompany.symbol}
+              currency={getCompany.currency}
+              price={getCompany.price}
+              available={getCompany.available_shares}
+            />}
           </div>
         </Body>
       </Wrapper>

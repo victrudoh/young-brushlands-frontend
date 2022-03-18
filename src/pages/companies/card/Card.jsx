@@ -1,15 +1,19 @@
-import React from 'react'
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 // styles
-import { Wrapper, Top, Bottom } from './Card.Styles'
+import { Wrapper, Top, Bottom } from "./Card.Styles";
 
-const Card = ({ id, name, symbol, currency, price, available }) => {
-
+const Card = (props) => {
+  const { id, name, symbol, currency, price, available, type } = props
   const history = useHistory();
 
-  const gotoUpdateCompanyHandler = () => {
-    history.push("/update_company/");
+  const gotoUpdateCompanyHandler = (id) => {
+    history.push(`/update_company/${id}`);
+  };
+
+  const gotoBuySharesHandler = () => {
+    history.push("/buy_shares");
   };
 
   return (
@@ -29,20 +33,40 @@ const Card = ({ id, name, symbol, currency, price, available }) => {
           Available: {available}
           <br />
           <hr />
-          <button
-            companyId={id}
-            onClick={gotoUpdateCompanyHandler}
-            className="w-50 btn btn-sm btn-outline-warning"
-          >
-            Update Company
-          </button>
-          <button companyId={id} className="w-50 btn btn-sm btn-outline-danger">
-            Delete Company
-          </button>
+          {type === "update" ? (
+            <>
+              <button
+                companyId={id}
+                onClick={()=> gotoUpdateCompanyHandler(id)}
+                className="w-50 btn btn-sm btn-outline-warning"
+              >
+                Update Company
+              </button>
+              <button
+                companyId={id}
+                className="w-50 btn btn-sm btn-outline-danger"
+              >
+                Delete Company
+              </button>
+            </>
+          ) : (
+            <></>
+          )}
+          {type === "buy" ? (
+            <button
+              companyId={id}
+              onClick={gotoBuySharesHandler}
+              className="w-50 btn btn-md btn-outline-warning"
+            >
+              Buy shares
+            </button>
+          ) : (
+            <></>
+          )}
         </Bottom>
       </Wrapper>
     </>
   );
-}
+};
 
-export default Card
+export default Card;

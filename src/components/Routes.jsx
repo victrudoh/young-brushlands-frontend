@@ -12,6 +12,9 @@ import CreateCompany from "../pages/companies/createCompany/CreateCompany";
 import FindCompany from "../pages/companies/findCompany/FindCompany";
 import UpdateCompany from "../pages/companies/updateCompany/UpdateCompany";
 
+// SHARES
+import Shares from "../pages/shares/Shares";
+import BuyShares from "../pages/shares/buyShares/BuyShares";
 
 const Routes = () => {
   return (
@@ -19,10 +22,16 @@ const Routes = () => {
       <Route path="/" exact component={Home} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+
+      {/* COMPANY ROUTES */}
       <Route path="/companies" component={Companies} />
       <Route path="/create_company" component={CreateCompany} />
       <Route path="/find_company" component={FindCompany} />
-      <Route path="/update_company" component={UpdateCompany} />
+      <Route path="/update_company/:id" component={UpdateCompany} />
+
+      {/* SHARES ROUTES */}
+      <Route path="/shares" component={Shares} />
+      <Route path="/buy_shares" component={BuyShares} />
     </Switch>
   );
 };

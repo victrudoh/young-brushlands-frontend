@@ -5,6 +5,9 @@ import axios from "axios";
 // Styles
 import { Wrapper, Card } from "./Register.Styles";
 
+// components
+import { Spinner } from "../../components/spinner/Spinner.Styles";
+
 const Register = () => {
 
   const history = useHistory();
@@ -15,8 +18,10 @@ const Register = () => {
     email: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const submit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     const response = await axios.post(
       "https://young-brushlands-24339.herokuapp.com/account/auth/register",
@@ -25,6 +30,7 @@ const Register = () => {
         headers: { "content-type": "application/json" },
       }
     );
+    setLoading(false);
     if (response.status === 201) {
       localStorage.setItem("token", response.data.access_token);
       history.push("/login")
@@ -91,6 +97,8 @@ const Register = () => {
               defaultValue={userDetails.password}
             />
             <br />
+
+            {loading ? <Spinner /> : <></>}
 
             <button
               className="w-50 btn btn-md btn-outline-warning my-4"

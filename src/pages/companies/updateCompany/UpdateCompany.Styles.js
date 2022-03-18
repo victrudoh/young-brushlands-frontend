@@ -21,7 +21,7 @@ export const Body = styled.div`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   margin-bottom: 150px;
   border-radius: 10px;
-  width: 50%;
+  width: 40%;
 
   @media (max-width: 768px) {
     width: 80%;
@@ -31,7 +31,7 @@ export const Body = styled.div`
     padding: 0.5rem;
     border-radius: 8px;
     margin: 0.5rem 0;
-    min-width: 400px;
+    min-width: 50%;
 
     @media (max-width: 768px) {
       width: 280px;
