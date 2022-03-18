@@ -12,6 +12,10 @@ const Card = (props) => {
     history.push(`/update_company/${id}`);
   };
 
+  const gotoDeleteCompanyHandler = (id) => {
+    history.push(`/delete_company/${id}`);
+  };
+
   const gotoBuySharesHandler = () => {
     history.push("/buy_shares");
   };
@@ -37,7 +41,7 @@ const Card = (props) => {
             <>
               <button
                 companyId={id}
-                onClick={()=> gotoUpdateCompanyHandler(id)}
+                onClick={() => gotoUpdateCompanyHandler(id)}
                 className="w-50 btn btn-sm btn-outline-warning"
               >
                 Update Company
@@ -45,6 +49,7 @@ const Card = (props) => {
               <button
                 companyId={id}
                 className="w-50 btn btn-sm btn-outline-danger"
+                onClick={() => gotoDeleteCompanyHandler(id)}
               >
                 Delete Company
               </button>
