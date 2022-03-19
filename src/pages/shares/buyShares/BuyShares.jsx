@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 
 // styles
-import { Wrapper } from "./BuyShares.Styles";
+import { Wrapper, Body } from "./BuyShares.Styles";
 
 // components
 import { Spinner } from "../../../components/spinner/Spinner.Styles";
@@ -91,15 +91,17 @@ const BuyShares = () => {
           />
         </div>
         <div>
+          <Body>
           <form onSubmit={submit}>
+            <div className="spacing">
             <label className="mx-2 py-1">Please enter quantity:</label>
             <input
-              className="px-2 rounded-pill"
               type="number"
               name="quantity"
               id="quantity"
               onChange={onchangeHandler}
             />
+            </div>
 
             {loading ? (
               <Spinner />
@@ -112,13 +114,17 @@ const BuyShares = () => {
                   >
                     Buy
                   </button>
-                  <button className="mx-3 btn btn-md btn-outline-warning my-4">
+                  <button
+                    className="mx-3 btn btn-md btn-outline-warning my-4"
+                    onClick={gotoGetSharesHandler}
+                  >
                     Back
                   </button>
                 </div>
               </>
             )}
           </form>
+          </Body>
         </div>
       </Wrapper>
     </>

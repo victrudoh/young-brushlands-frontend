@@ -66,7 +66,7 @@ const DeleteCompany = () => {
         <h1 className="h3 mb-5 fw-bold">Delete company</h1>
         Do you want to delete <b>{company.name}</b>?
         <br />
-        {loading ? <Spinner /> : <></>}
+        {loading ? <Spinner /> : <>
         <button
           className="mx-2 btn btn-md btn-outline-danger my-4"
           type="submit"
@@ -81,6 +81,7 @@ const DeleteCompany = () => {
         >
           No
         </button>
+        </>}
       </Card>
     </>
   );
