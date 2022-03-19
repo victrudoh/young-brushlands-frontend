@@ -23,11 +23,15 @@ export const Body = styled.div`
   gap: 0.8rem;
 
   .spacing {
-    display: flex;
+    display: block;
     margin: auto;
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+
+    @media (max-width:1000px) {
+      display: flex;
+    }
   }
 
   input {
