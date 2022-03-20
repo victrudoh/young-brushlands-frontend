@@ -32,7 +32,7 @@ const Register = () => {
     );
     setLoading(false);
     if (response.status === 201) {
-      localStorage.setItem("token", response.data.access_token);
+      // localStorage.setItem("token", response.data.access_token);
       history.push("/login")
     }
   };
