@@ -55,65 +55,69 @@ const Register = () => {
             <h1 className="h3 mb-5 fw-bold">Register</h1>
 
             <div className="spacing">
-            <label>Username: </label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="username"
-              onChange={onchangeHandler}
-              defaultValue={userDetails.username}
-            />
+              <label>Username: </label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"
+                onChange={onchangeHandler}
+                defaultValue={userDetails.username}
+              />
             </div>
             <br />
 
             <div className="spacing">
-            <label>User email: </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="name@example.com"
-              onChange={onchangeHandler}
-              defaultValue={userDetails.email}
-            />
+              <label>User email: </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="name@example.com"
+                onChange={onchangeHandler}
+                defaultValue={userDetails.email}
+              />
             </div>
             <br />
 
             <div className="spacing">
-            <label>Full name: </label>
-            <input
-              type="text"
-              name="full_name"
-              id="full_name"
-              placeholder="John Doe"
-              onChange={onchangeHandler}
-              defaultValue={userDetails.full_name}
-            />
+              <label>Full name: </label>
+              <input
+                type="text"
+                name="full_name"
+                id="full_name"
+                placeholder="John Doe"
+                onChange={onchangeHandler}
+                defaultValue={userDetails.full_name}
+              />
             </div>
             <br />
 
             <div className="spacing">
-            <label>Password: </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Password"
-              onChange={onchangeHandler}
-              defaultValue={userDetails.password}
-            />
+              <label>Password: </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                onChange={onchangeHandler}
+                defaultValue={userDetails.password}
+              />
             </div>
             <br />
 
-            {loading ? <Spinner /> : <></>}
-
-            <button
-              className="w-50 btn btn-md btn-outline-warning my-4"
-              type="submit"
-            >
-              Register
-            </button>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <>
+                <button
+                  className="w-50 btn btn-md btn-outline-warning my-4"
+                  type="submit"
+                >
+                  Register
+                </button>
+              </>
+            )}
           </form>
         </Card>
       </Wrapper>

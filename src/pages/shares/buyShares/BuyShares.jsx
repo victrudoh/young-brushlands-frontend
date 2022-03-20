@@ -56,8 +56,8 @@ const BuyShares = () => {
       company,
       {
         headers: { "content-type": "application/json" },
-        // Authorization: `Bearer ${localStorage.getItem("token")}`
-        Authorization: 'Basic ' + new Buffer.from('eddy:eddy', "utf8").toString('base64')
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+        // Authorization: 'Basic ' + new Buffer.from('eddy:eddy', "utf8").toString('base64')
       }
       );
     setLoading(false);

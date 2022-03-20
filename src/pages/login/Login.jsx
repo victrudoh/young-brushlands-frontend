@@ -82,14 +82,18 @@ const Login = () => {
             />
             <br />
 
-            {loading ? <Spinner /> : <></>}
-
-            <button
-              className="w-50 btn btn-md btn-outline-warning my-4"
-              type="submit"
-            >
-              Sign in
-            </button>
+            {loading ? (
+              <Spinner />
+            ) : (
+              <>
+                <button
+                  className="w-50 btn btn-md btn-outline-warning my-4"
+                  type="submit"
+                >
+                  Sign in
+                </button>
+              </>
+            )}
           </form>
         </Card>
       </Wrapper>

@@ -6,6 +6,7 @@ import Topbar from "../topbar/Topbar";
 import Routes from "../Routes";
 import Footer from "../footer/Footer";
 // import Sidebar from "../sidebar/Sidebar";
+import Top from "../topbar/Top";
 
 
 // STYLES
@@ -18,6 +19,7 @@ const Layout = () => {
         render={(props) => (
           <>
             <Topbar className="my-5" />
+            {/* <Top /> */}
             {/* <Sidebar /> */}
             <LayoutStyle>
               <Routes />
