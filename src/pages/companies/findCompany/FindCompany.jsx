@@ -3,11 +3,11 @@ import axios from "axios";
 
 
 // styles
-import { Wrapper, TopContainer, Header, Body } from "./FindCompany.Styles";
+import { Wrapper, TopContainer, Header, Body, Card } from "./FindCompany.Styles";
 
 // components
 import Search from "./search/Search";
-import Card from "../card/Card";
+// import Card from "../card/Card";
 import { Spinner } from "../../../components/spinner/Spinner.Styles";
 
 const FindCompany = () => {
@@ -23,9 +23,9 @@ const FindCompany = () => {
       const searchCompanies = async () => {
         setLoading(true);
         const response = await axios.get(
-          `https://young-brushlands-24339.herokuapp.com/company/${searchField}`
+          `https://young-brushlands-24339.herokuapp.com/company/quotes/${searchField}`
         );
-        console.log("searched companies: ", response.data);
+        console.log("searched companies: ", response.data.Symbol);
         setLoading(false);
         setGetCompany(response.data);
       };
@@ -48,14 +48,37 @@ const FindCompany = () => {
             Search
           </button>
           <div className="cardHolder">
-            {loading ? <Spinner /> : 
-            <Card
-              name={getCompany.name}
-              symbol={getCompany.symbol}
-              currency={getCompany.currency}
-              price={getCompany.price}
-              available={getCompany.available_shares}
-            />}
+            {
+              loading ? (
+                <Spinner />
+              ) : (
+                <Card>
+                  <div className="name mb-1">
+                    {getCompany.Name}({getCompany.Symbol})
+                  </div>
+                  <p>
+                    Address: {getCompany.Address}
+                    <br />
+                    Market Capitalization: {getCompany.MarketCapitalization} (
+                    {getCompany.Currency})
+                    <br />
+                    Asset Type: {getCompany.AssetType}
+                    <br />
+                    Earnings per share: {getCompany.EPS}
+                    <br />
+                  </p>
+
+                  <h5>{getCompany.Description}</h5>
+                </Card>
+              )
+              // <Card
+              //   name={getCompany.name}
+              //   symbol={getCompany.symbol}
+              //   currency={getCompany.currency}
+              //   price={getCompany.price}
+              //   available={getCompany.available_shares}
+              // />
+            }
           </div>
         </Body>
       </Wrapper>
