@@ -39,7 +39,7 @@ const FindCompany = () => {
           <Header>Find a company</Header>
         </TopContainer>
         <Body>
-          <p>Please enter company id;</p>
+          <p>Please enter company symbol;</p>
           <Search searchCompany={onSearchChangeHandler} />
           <button
             onClick={searchCompaniesHandler}
