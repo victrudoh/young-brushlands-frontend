@@ -12,6 +12,10 @@ const Card = (props) => {
     history.push(`/update_company/${id}`);
   };
 
+  const gotoConvertCurrencyHandler = (id) => {
+    history.push(`/convert_currency/${id}`);
+  };
+
   const gotoDeleteCompanyHandler = (id) => {
     history.push(`/delete_company/${id}`);
   };
@@ -45,6 +49,13 @@ const Card = (props) => {
                 className="w-50 btn btn-sm btn-outline-warning"
               >
                 Update Company
+              </button>
+              <button
+                companyId={id}
+                onClick={() => gotoConvertCurrencyHandler(id)}
+                className="w-50 btn btn-sm btn-outline-info"
+              >
+                Convert Currency
               </button>
               <button
                 companyId={id}

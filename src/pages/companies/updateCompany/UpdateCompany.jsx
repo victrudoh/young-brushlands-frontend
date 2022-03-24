@@ -133,8 +133,7 @@ const UpdateCompany = () => {
             </div>
             <br />
 
-            {loading ? <Spinner /> : <></>}
-
+            {loading ? <Spinner /> : <>
             <div>
               <button
                 className="mx-2 btn btn-md btn-outline-warning my-4"
@@ -149,6 +148,8 @@ const UpdateCompany = () => {
                 Back
               </button>
             </div>
+            </>}
+
           </form>
         </Body>
       </Wrapper>

@@ -12,6 +12,7 @@ import CreateCompany from "../pages/companies/createCompany/CreateCompany";
 import FindCompany from "../pages/companies/findCompany/FindCompany";
 import UpdateCompany from "../pages/companies/updateCompany/UpdateCompany";
 import DeleteCompany from "../pages/companies/deleteCompany/DeleteCompany";
+import ConvertCurrency from "../pages/companies/convertCurrency/ConvertCurrency";
 
 // SHARES
 import Shares from "../pages/shares/Shares";
@@ -30,6 +31,7 @@ const Routes = () => {
       <Route path="/find_company" component={FindCompany} />
       <Route path="/update_company/:id" component={UpdateCompany} />
       <Route path="/delete_company/:id" component={DeleteCompany} />
+      <Route path={"/convert_currency/:id"} component={ConvertCurrency} />
 
       {/* SHARES ROUTES */}
       <Route path="/shares" component={Shares} />
