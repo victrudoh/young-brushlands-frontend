@@ -7,6 +7,7 @@ import { Wrapper, Body } from "./ConvertCurrency.Styles";
 
 // components
 import { Spinner } from "../../../components/spinner/Spinner.Styles";
+import Card from "../card/Card";
 
 const ConvertCurrency = () => {
   const history = useHistory();
@@ -16,61 +17,59 @@ const ConvertCurrency = () => {
     history.push("/companies");
   };
 
-    const [company, setCompany] = useState({
-      id: 0,
-      name: "",
-    //   symbol: "",
-    //   price: 0,
-    //   available_shares: 0,
-      currency: "",
+  const [company, setCompany] = useState({
+    id: 0,
+    name: "",
+      symbol: "",
+      price: 0,
+      available_shares: 0,
+    currency: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    fetchCompany();
+  }, []);
+
+  const fetchCompany = async () => {
+    setLoading(true);
+    const response = await axios.get(
+      `https://young-brushlands-24339.herokuapp.com/company/${id}`
+    );
+    setLoading(false);
+    if (response.status === 200) {
+      setCompany((company) => ({
+        ...company,
+        ...response.data,
+      }));
+    }
+  };
+
+  const submit = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    const response = await axios.get(
+      `https://young-brushlands-24339.herokuapp.com/company/${company.id}?currency=${company.currency}`
+    );
+    setCompany({
+      id: response.data.id,
+      name: response.data.name,
+      symbol: response.data.symbol,
+      price: response.data.price,
+      available_shares: response.data.available_shares,
+      currency: response.data.currency,
     });
-    console.log("Company from top: ", company)
+    setLoading(false);
+  };
 
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-      fetchCompany();
-    }, []);
-
-      const fetchCompany = async () => {
-        setLoading(true);
-        const response = await axios.get(
-          `https://young-brushlands-24339.herokuapp.com/company/${id}`
-        );
-        setLoading(false);
-        if (response.status === 200) {
-          setCompany((company) => ({
-            ...company,
-            ...response.data,
-          }));
-        }
-      };
-
-        const submit = async (e) => {
-          setLoading(true);
-          e.preventDefault();
-          console.log("Company: ", company);
-          const response = await axios.put(
-            `https://young-brushlands-24339.herokuapp.com/company/${company.id}?currency=${company.currency}`,
-            company,
-            {
-              headers: { "content-type": "application/json" },
-            }
-          );
-          setLoading(false);
-          if (response.status === 200) {
-            history.push("/companies");
-          }
-        };
-
-        const onchangeHandler = async (e) => {
-          e.persist();
-          setCompany((company) => ({
-            ...company,
-            [e.target.name]: e.target.value,
-          }));
-        };
-        console.log(company);
+  const onchangeHandler = async (e) => {
+    e.persist();
+    setCompany((company) => ({
+      ...company,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   return (
     <>
@@ -82,14 +81,6 @@ const ConvertCurrency = () => {
             <div className="spacing">
               <label>Company name: </label>
               <h3>{company.name}</h3>
-              {/* <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Company name"
-                onChange={onchangeHandler}
-                defaultValue={company.name}
-              /> */}
             </div>
             <br />
 
@@ -122,9 +113,12 @@ const ConvertCurrency = () => {
               <option value="YER">YER</option>
               <option value="ZAR">ZAR</option>
             </select>
-            {/* <div className="spacing">
-            </div> */}
+
             <br />
+            <p>
+              currency changes upon selection, please click <b> convert</b> to
+              change price
+            </p>
 
             {loading ? (
               <Spinner />
@@ -143,6 +137,17 @@ const ConvertCurrency = () => {
                   >
                     Back
                   </button>
+                  <br />
+                  <div className="cardHolder">
+                    <Card
+                      id={company.id}
+                      name={company.name}
+                      symbol={company.symbol}
+                      currency={company.currency}
+                      price={company.price}
+                      available={company.available_shares}
+                    />
+                  </div>
                 </div>
               </>
             )}

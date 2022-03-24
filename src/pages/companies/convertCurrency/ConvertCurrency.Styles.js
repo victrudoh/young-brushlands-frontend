@@ -33,9 +33,29 @@ export const Body = styled.div`
   .spacing {
     display: flex;
     margin: auto;
-    justify-content: space-between;
+    text-align: left;
+    /* justify-content: space-between; */
     align-items: center;
     padding: 0 2rem;
+
+    @media (max-width: 768px) {
+      display: flex;
+      margin: auto;
+      justify-content: space-between;
+    }
+  }
+
+  p {
+    background-color: var(--accentColor);
+    /* opacity: 60%; */
+    /* font-weight: bolder; */
+    font-size: 13px;
+    border-radius: 8px;
+  }
+
+  .cardHolder {
+    display: flex;
+    justify-content: center;
   }
 
   input {
