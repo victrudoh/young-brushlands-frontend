@@ -17,6 +17,7 @@ import ConvertCurrency from "../pages/companies/convertCurrency/ConvertCurrency"
 // SHARES
 import Shares from "../pages/shares/Shares";
 import BuyShares from "../pages/shares/buyShares/BuyShares";
+import SellShares from "../pages/shares/sellShares/SellShares";
 
 const Routes = () => {
   return (
@@ -36,6 +37,7 @@ const Routes = () => {
       {/* SHARES ROUTES */}
       <Route path="/shares" component={Shares} />
       <Route path="/buy_shares/:id" component={BuyShares} />
+      <Route path="/sell_shares/:id" component={SellShares} />
     </Switch>
   );
 };

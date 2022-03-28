@@ -24,7 +24,7 @@ const Login = () => {
     const submit = async (e) => {
       setLoading(true);
       e.preventDefault();
-      console.log(userDetails)
+      // console.log(userDetails)
       const formData = new FormData()
       for(const value in userDetails){
           formData.append(value, userDetails[value])

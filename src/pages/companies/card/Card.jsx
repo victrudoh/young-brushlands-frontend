@@ -24,6 +24,10 @@ const Card = (props) => {
     history.push(`/buy_shares/${id}`);
   };
 
+  const gotoSellSharesHandler = (id) => {
+    history.push(`/sell_shares/${id}`);
+  };
+
   return (
     <>
       <Wrapper>
@@ -69,13 +73,22 @@ const Card = (props) => {
             <></>
           )}
           {type === "buy" ? (
-            <button
+            <>
+              <button
               companyId={id}
               onClick={() => gotoBuySharesHandler(id)}
               className="w-50 btn btn-md btn-outline-warning"
             >
               Buy shares
             </button>
+              <button
+              companyId={id}
+              onClick={() => gotoSellSharesHandler(id)}
+              className="w-50 btn btn-md btn-outline-info"
+            >
+              Sell shares
+            </button>
+            </>
           ) : (
             <></>
           )}
