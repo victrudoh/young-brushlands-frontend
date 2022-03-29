@@ -1,11 +1,16 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import axios from "axios";
 
 // styles
 import { Wrapper, Top, Bottom } from "./Card.Styles";
 
+// components
+import { Spinner } from "../../../components/spinner/Spinner.Styles";
+
 const Card = (props) => {
-  const { id, name, symbol, currency, price, available, type } = props
+  const { id, name, symbol, currency, price, available, type, you_have } =
+    props;
   const history = useHistory();
 
   const gotoUpdateCompanyHandler = (id) => {
@@ -28,6 +33,16 @@ const Card = (props) => {
     history.push(`/sell_shares/${id}`);
   };
 
+  const [loading, setLoading] = useState(false);
+
+  if (type === "sell") {}
+
+  // useEffect(() => {
+  //   fetchUser();
+  // }, []);
+
+
+
   return (
     <>
       <Wrapper>
@@ -42,7 +57,7 @@ const Card = (props) => {
           </div>
         </Top>
         <Bottom>
-          Available: {available}
+          {type === "sell" ? `You have: ${you_have}` : `Available: ${available}`}
           <br />
           <hr />
           {type === "update" ? (
@@ -75,19 +90,19 @@ const Card = (props) => {
           {type === "buy" ? (
             <>
               <button
-              companyId={id}
-              onClick={() => gotoBuySharesHandler(id)}
-              className="w-50 btn btn-md btn-outline-warning"
-            >
-              Buy shares
-            </button>
+                companyId={id}
+                onClick={() => gotoBuySharesHandler(id)}
+                className="w-50 btn btn-md btn-outline-warning"
+              >
+                Buy shares
+              </button>
               <button
-              companyId={id}
-              onClick={() => gotoSellSharesHandler(id)}
-              className="w-50 btn btn-md btn-outline-info"
-            >
-              Sell shares
-            </button>
+                companyId={id}
+                onClick={() => gotoSellSharesHandler(id)}
+                className="w-50 btn btn-md btn-outline-info"
+              >
+                Sell shares
+              </button>
             </>
           ) : (
             <></>

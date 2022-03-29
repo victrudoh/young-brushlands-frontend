@@ -28,10 +28,38 @@ const SellShares = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [youHave, setYouHave] = useState(0);
 
   useEffect(() => {
     fetchCompany();
   }, []);
+  
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+//   FETCH USER
+  const fetchUser = async () => {
+    setLoading(true);
+    const response = await axios.get(
+      "https://young-brushlands-24339.herokuapp.com/account/users/me/",
+      {
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
+    setLoading(false);
+    const shares = response.data.shares;
+    shares.map((loop) => {
+        const loopId = loop.company.id
+        if (loopId == id) {
+            setYouHave(loop.quantity);
+        }
+    });
+  };
+
 
   const fetchCompany = async () => {
     setLoading(true);
@@ -50,14 +78,14 @@ const SellShares = () => {
   const submit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log("Company: ", company);
-    console.log("token: ", localStorage.getItem("token"));
     const response = await axios.post(
       `https://young-brushlands-24339.herokuapp.com/shares/sell/${company.id}`,
       company,
       {
-        headers: { "content-type": "application/json" },
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
     setLoading(false);
@@ -89,6 +117,8 @@ const SellShares = () => {
             currency={company.currency}
             price={company.price}
             available={company.available_shares}
+            type="sell"
+            you_have={youHave}
           />
         </div>
         <div>

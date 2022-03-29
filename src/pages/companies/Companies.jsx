@@ -32,13 +32,10 @@ const Companies = () => {
   // state
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState(false);
 
   const getCompanies = async () => {
     try {
-      // setError(false)
       setLoading(true)
-        // "proxy": "https://young-brushland-24339.herokuapp.com",
         const response = await axios.get(
           "https://young-brushlands-24339.herokuapp.com/company"
         );
@@ -47,7 +44,6 @@ const Companies = () => {
         return response;      
     } catch (error) {
       console.log(error)
-      // setError(true);
     }
   }
 

@@ -49,17 +49,16 @@ const BuyShares = () => {
   const submit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log("Company: ", company);
-    console.log("token: ", localStorage.getItem("token"));
     const response = await axios.post(
       `https://young-brushlands-24339.herokuapp.com/shares/buy/${company.id}`,
       company,
       {
-        headers: { "content-type": "application/json" },
-        Authorization: `Bearer ${localStorage.getItem("token")}`
-        // Authorization: 'Basic ' + new Buffer.from('eddy:eddy', "utf8").toString('base64')
+        headers: {
+          "content-type": "application/json",
+          Authorization : `Bearer ${localStorage.getItem("token")}`,
+        },
       }
-      );
+    );
     setLoading(false);
     if (response.status === 200) {
       history.push("/shares");
